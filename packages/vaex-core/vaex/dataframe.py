@@ -4320,7 +4320,11 @@ class DataFrame(object):
     def __len__(self):
         """Returns the number of rows in the DataFrame (filtering applied)."""
         if not self.filtered:
-            return self._length_unfiltered
+            # MOD: with empty instance set length equal zro if var is None (not yet assigned)
+            if self._length_unfiltered is None:
+                return 0         
+            else:
+                return self._length_unfiltered
         else:
             if self._cached_filtered_length is None:
                 self._cached_filtered_length = int(self.count())

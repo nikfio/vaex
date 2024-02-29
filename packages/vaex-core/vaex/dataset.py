@@ -414,8 +414,11 @@ class Dataset(collections.abc.Mapping):
         return {name: self.shape(name) for name, col in self.items()}
 
     def _set_row_count(self):
-        if not self._columns:
-            return
+        # MOD: to manage an empty instance of a dataframe
+        #       ensure _row_count equals zero to have a consistent len method execution
+        if not self._columns:   
+            self._row_count = 0
+            return 0
         values = list(self._columns.values())
         self._row_count = len(values[0])
         for name, value in list(self._columns.items())[1:]:
