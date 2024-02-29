@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.9,<=3.10.13"
 sphinx-book-theme = "^1.1.2"
 sphinx-sitemap = "^2.5.1"
 sphinxcontrib-googleanalytics = "^0.4"
